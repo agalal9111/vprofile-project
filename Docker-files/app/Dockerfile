@@ -6,5 +6,5 @@ RUN cd vprofile-project && mvn install
 FROM tomcat:9-jre11
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=BUILD vprofile-project/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
-CMD ["catalina.,sh","run"]
+CMD ["catalina.sh","run"]
 
