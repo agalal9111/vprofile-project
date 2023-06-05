@@ -1,0 +1,29 @@
+services:
+  vproapp:
+    build: 
+      context: ./Docker-files/app
+    ports:
+    - 8080:8080
+    container_name: vproapp
+
+  db:
+    build: 
+      context: ./Docker-files/db
+    ports:
+    - 3306:3306
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbpass
+    volumes:
+      - vprodbdata:/var/lib/mysql
+
+
+  web:
+    build: 
+      context: ./Docker-files/web
+    ports:
+    - 80:80
+    container_name: web
+
+volumes:
+ vprodbdata: {}
